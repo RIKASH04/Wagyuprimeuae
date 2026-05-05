@@ -1,0 +1,140 @@
+{
+  "theme": "dark",
+  "archetype": "5 (Jewel & Luxury)",
+  "vibe": "Cinematic, dramatic, expensive, premium digital catalogue, Michelin-star dining feel.",
+  "typography": {
+    "fonts": [
+      {
+        "name": "Playfair Display",
+        "usage": "H1, H2, Hero displays, high-impact emotional statements.",
+        "weight": "bold",
+        "tailwind_class": "font-serif"
+      },
+      {
+        "name": "Montserrat",
+        "usage": "Section overlines, subheadings, primary CTA buttons, filter labels.",
+        "weight": "bold",
+        "tailwind_class": "font-sans uppercase tracking-[0.2em]"
+      },
+      {
+        "name": "Lato",
+        "usage": "Body copy, descriptions, standard text.",
+        "weight": "regular",
+        "tailwind_class": "font-sans"
+      }
+    ],
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl+ tracking-tighter leading-none",
+      "h2": "text-4xl sm:text-5xl tracking-tight leading-tight",
+      "h3": "text-2xl sm:text-3xl",
+      "overline": "text-xs sm:text-sm uppercase tracking-[0.25em] text-[#C9A84C]",
+      "body": "text-base leading-relaxed text-[#FAFAFA]"
+    }
+  },
+  "color_palette": {
+    "backgrounds": {
+      "primary": "#1A1A1A",
+      "deep": "#0F0F0F",
+      "card": "#1A1A1A",
+      "overlay": "rgba(26, 26, 26, 0.6)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#FAFAFA",
+      "muted": "#A3A3A3",
+      "gold": "#C9A84C"
+    },
+    "accents": {
+      "gold_primary": "#C9A84C",
+      "gold_dark": "#B8860B",
+      "gold_light": "#F2DA91",
+      "cta_red": "#8B0000"
+    },
+    "borders": {
+      "subtle": "rgba(201, 168, 76, 0.2)",
+      "highlight": "rgba(201, 168, 76, 0.5)"
+    }
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Use generous spacing. p-8, p-12, py-24, py-32 for sections to give breathing room. Margin gap-8 to gap-16.",
+    "marketing_grid": "Tetris grid mode: Asymmetrical spans (e.g. col-span-8 and col-span-4). Never fill perfectly. Leave negative space.",
+    "product_grid": "Bento grid for categories (A5, Australian, American). Dense but luxurious.",
+    "alignment": "Left-align dense text and labels. Center-align hero text and big philosophical statements."
+  },
+  "surface_strategies": {
+    "cards": "Flat background (#1A1A1A), 1px subtle border (border-[#C9A84C]/20). No heavy shadows, use faint glows or sharp edges.",
+    "headers": "Crystal glassmorphism: bg-[#1A1A1A]/80 backdrop-blur-xl border-b border-[#C9A84C]/10.",
+    "badges": "Circular motifs as requested. Use border border-[#C9A84C] rounded-full px-4 py-1 text-xs tracking-widest uppercase.",
+    "dividers": "Gold divider lines: h-[1px] bg-gradient-to-r from-transparent via-[#C9A84C]/50 to-transparent."
+  },
+  "component_rules": {
+    "buttons": {
+      "primary": "bg-[#8B0000] text-white hover:bg-[#A50000] uppercase tracking-widest text-sm rounded-none px-8 py-4 transition-colors",
+      "secondary": "border border-[#C9A84C] text-[#C9A84C] hover:bg-[#C9A84C] hover:text-[#1A1A1A] uppercase tracking-widest text-sm rounded-none px-8 py-4 transition-colors"
+    },
+    "inputs": "bg-transparent border-b border-[#C9A84C]/30 rounded-none focus:ring-0 focus:border-[#C9A84C] text-white px-0 py-2",
+    "announcement_bar": "bg-[#B8860B] text-[#1A1A1A] text-xs uppercase tracking-widest text-center py-2 font-bold",
+    "badges_and_tags": "Circular badge motifs for trust icons (e.g., BMS 12, Halal, Origin) using rounded-full borders."
+  },
+  "interactive_and_motion": {
+    "hover_states": "Images must have slow, luxurious scale (hover:scale-105 duration-700 ease-out).",
+    "transitions": "Use fade-in on scroll for text blocks. Gentle staggers for lists.",
+    "navigation": "Header must be sticky with glassmorphism. Navigation links hover state should turn #C9A84C."
+  },
+  "media_assets": {
+    "images": {
+      "hero_wagyu": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/d5ef2e46968c2aea45eea4dd8fc30ffdfa48ed0db3996853990aa3d5098b6d2f.png",
+        "description": "Cinematic wide shot of premium Wagyu steak in cast iron pan",
+        "usage": "Homepage Hero Section Background"
+      },
+      "japanese_a5_category": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/da6ba36fd9e61e862e8c85a53cd91baee1e5fad93fe2c89e2c3a52cc8231d261.png",
+        "description": "Raw Japanese A5 Wagyu beef block",
+        "usage": "Category Card: Japanese A5 Wagyu"
+      },
+      "australian_wagyu_category": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/cc057bde3e4db0cb25052ee68c00ca86a350787725a2573b11fbc52774a71b6c.png",
+        "description": "Raw Australian Wagyu ribeye steak on dark wood",
+        "usage": "Category Card: Australian Wagyu"
+      },
+      "american_wagyu_category": {
+        "url": "https://images.unsplash.com/photo-1728376335968-fe671a2013d6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxyYXclMjB3YWd5dSUyMHN0ZWFrJTIwZGFya3xlbnwwfHx8fDE3Nzc5NzY2NTR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Raw Wagyu cut on dark surface",
+        "usage": "Category Card: American Wagyu"
+      },
+      "product_tomahawk": {
+        "url": "https://images.unsplash.com/photo-1728042359879-f5d2c233a07c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxyYXclMjB3YWd5dSUyMHN0ZWFrJTIwZGFya3xlbnwwfHx8fDE3Nzc5NzY2NTR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Premium steak piece",
+        "usage": "Products Listing: Tomahawk / Ribeye"
+      },
+      "product_seafood": {
+        "url": "https://images.unsplash.com/photo-1705917669135-19e1bd0fe7b1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwyfHxyYXclMjBsb2JzdGVyJTIwdGFpbHxlbnwwfHx8fDE3Nzc5NzY2NTR8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Lobster tails on ice",
+        "usage": "Products Listing: Premium Seafood"
+      },
+      "pantry_sea_salt": {
+        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/3334e6c2acc12ffa195d7e69467ae2a30040c7090f650af0ee8724defcf8b872.png",
+        "description": "Artisan sea salt in dark ceramic bowl",
+        "usage": "Products Listing: Pantry / Seasoning"
+      },
+      "about_chef_plating": {
+        "url": "https://images.unsplash.com/photo-1621494268492-d01b98eba7e4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxmaW5lJTIwZGluaW5nJTIwY2hlZiUyMGRhcmt8ZW58MHx8fHwxNzc3OTc2NjU0fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Dark luxury fine dining chef plating",
+        "usage": "About Us / Blog Feature / Testimonial Background"
+      }
+    },
+    "rules": "Overlay hero images with max bg-black/50 or bg-gradient-to-t from-[#1A1A1A] to-transparent to ensure text contrast while keeping image visible."
+  },
+  "testing_attributes": {
+    "rules": "All interactive elements MUST have data-testid attributes (e.g., data-testid='contact-to-order-btn', data-testid='category-filter-wagyu')."
+  },
+  "instructions_to_main_agent": [
+    "No e-commerce cart. Replace all 'Add to Cart' functionality with a 'Contact to Order' CTA that links to WhatsApp.",
+    "Use standard Shadcn UI components for complex interactions but strip standard borders; use only 1px #C9A84C/20 borders and no default rounded corners (rounded-none for sharp luxury feel).",
+    "Strictly adhere to the dark theme #1A1A1A background with gold accents. Do not introduce standard grays or blues.",
+    "Display UAE specific info: Prices in AED. Emphasize delivery to Dubai, Abu Dhabi, Sharjah, Ajman, RAK, Fujairah, UAQ.",
+    "Never center-align large blocks of text. Center-alignment is only for Heros, small badges, or short philosophical quotes.",
+    "Integrate circular badge motifs across the layout for origin and BMS grading."
+  ]
+}
