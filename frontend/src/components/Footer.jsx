@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { SITE } from '../lib/site';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL || ''}/api`;
 
 const Footer = () => {
   const [email, setEmail] = useState('');

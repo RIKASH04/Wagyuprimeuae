@@ -5,7 +5,7 @@ import { MessageCircle, Mail, MapPin, Instagram, Facebook } from 'lucide-react';
 import { SITE, waLink } from '../lib/site';
 import Reveal from '../components/Reveal';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL || ''}/api`;
 
 const initialForm = { name: '', email: '', subject: '', message: '' };
 
