@@ -29,24 +29,19 @@ db_name = os.environ.get('DB_NAME', 'wagyuprimeuae')
 client = None
 db = None
 
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Manage database connection lifecycle."""
+def get_db():
     global client, db
-    client = AsyncIOMotorClient(mongo_url)
-    db = client[db_name]
-    logger.info(f"Connected to MongoDB: {db_name}")
-    yield
-    client.close()
-    logger.info("MongoDB connection closed")
+    if db is None:
+        client = AsyncIOMotorClient(mongo_url)
+        db = client[db_name]
+        logger.info(f"Connected to MongoDB: {db_name}")
+    return db
 
 
 app = FastAPI(
     title="WagyuPrimeUAE API",
     description="Backend API for WagyuPrimeUAE — Premium Wagyu Steaks in the UAE",
     version="1.0.0",
-    lifespan=lifespan,
 )
 
 app.add_middleware(
@@ -95,30 +90,34 @@ async def root():
 
 @api_router.post("/contact", response_model=ContactSubmission)
 async def create_contact(payload: ContactCreate):
+    database = get_db()
     doc = ContactSubmission(**payload.model_dump()).model_dump()
-    await db.contact_submissions.insert_one(doc)
+    await database.contact_submissions.insert_one(doc)
     return ContactSubmission(**doc)
 
 
 @api_router.get("/contact", response_model=List[ContactSubmission])
 async def list_contacts():
-    items = await db.contact_submissions.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    database = get_db()
+    items = await database.contact_submissions.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
     return items
 
 
 @api_router.post("/newsletter", response_model=NewsletterSubscriber)
 async def subscribe_newsletter(payload: NewsletterCreate):
-    existing = await db.newsletter_subscribers.find_one({"email": payload.email}, {"_id": 0})
+    database = get_db()
+    existing = await database.newsletter_subscribers.find_one({"email": payload.email}, {"_id": 0})
     if existing:
         return NewsletterSubscriber(**existing)
     doc = NewsletterSubscriber(email=payload.email).model_dump()
-    await db.newsletter_subscribers.insert_one(doc)
+    await database.newsletter_subscribers.insert_one(doc)
     return NewsletterSubscriber(**doc)
 
 
 @api_router.get("/newsletter", response_model=List[NewsletterSubscriber])
 async def list_newsletter():
-    items = await db.newsletter_subscribers.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    database = get_db()
+    items = await database.newsletter_subscribers.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     return items
 
 
