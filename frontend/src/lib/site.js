@@ -5,7 +5,7 @@ export const SITE = {
   tagline: 'Enjoy the journey and remember, the perfect steak chooses you...',
   whatsappNumber: '9686541863', // raw digits, no symbols
   whatsappDisplay: '+91 96865 41863',
-  email: 'rikashrikash04@gmail.com',
+  email: 'info@wagyuprimeuae.com',
   cities: ['Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman', 'RAK', 'Fujairah', 'UAQ'],
   social: {
     instagram: 'https://instagram.com/',

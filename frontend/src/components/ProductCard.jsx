@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Stars from './Stars';
 
 const ProductCard = ({ product, index = 0 }) => {
+  // Build flag image URL from country code
+  const flagUrl = product.flagImg || (product.flag && product.flag !== 'GEN'
+    ? `https://flagcdn.com/w80/${product.flag.toLowerCase()}.png`
+    : null);
+
   return (
     <Link
       to={`/steaks/${product.slug}`}
@@ -10,7 +14,7 @@ const ProductCard = ({ product, index = 0 }) => {
       className="group block bg-[#1A1A1A] border border-[#C9A84C]/15 hover:border-[#C9A84C]/60 transition-colors duration-500"
       style={{ animationDelay: `${index * 60}ms` }}
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#0F0F0F]">
+      <div className="relative aspect-[4/4] overflow-hidden bg-[#0F0F0F]">
         <img
           src={product.image}
           alt={product.name}
@@ -32,9 +36,15 @@ const ProductCard = ({ product, index = 0 }) => {
         </div>
         {/* Origin flag */}
         <div className="absolute top-4 right-4">
-          <span className="w-9 h-9 rounded-full border border-[#C9A84C]/60 flex items-center justify-center font-heading text-[9px] tracking-widest text-[#C9A84C] bg-[#1A1A1A]/70 backdrop-blur-sm">
-            {product.flag}
-          </span>
+          {flagUrl ? (
+            <div className="w-10 h-7 rounded overflow-hidden shadow-md border border-white/20 bg-[#1A1A1A]/70 backdrop-blur-sm">
+              <img src={flagUrl} alt={product.origin} className="w-full h-full object-cover" />
+            </div>
+          ) : (
+            <span className="w-9 h-9 rounded-full border border-[#C9A84C]/60 flex items-center justify-center font-heading text-[9px] tracking-widest text-[#C9A84C] bg-[#1A1A1A]/70 backdrop-blur-sm">
+              {product.flag}
+            </span>
+          )}
         </div>
         {/* Bottom hover overlay */}
         <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#0F0F0F] via-[#0F0F0F]/80 to-transparent translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
@@ -46,16 +56,17 @@ const ProductCard = ({ product, index = 0 }) => {
       <div className="p-5 space-y-3">
         <div className="flex items-center justify-between gap-3">
           <span className="font-heading text-[9px] tracking-[0.32em] uppercase text-[#C9A84C]">
-            {product.grade}
+            {product.origin}
           </span>
-          <Stars value={product.rating} size={11} />
+          {flagUrl && (
+            <img src={flagUrl} alt="" className="w-5 h-3.5 object-cover rounded-sm opacity-60" />
+          )}
         </div>
         <h3 className="font-heading text-[13px] md:text-[14px] tracking-[0.18em] uppercase text-white leading-snug">
           {product.name}
         </h3>
         <div className="flex items-center justify-between text-xs text-white/55">
-          <span>{product.weights.join(' · ')}</span>
-          <span>{product.reviews} reviews</span>
+          <span>{product.cut}</span>
         </div>
       </div>
     </Link>

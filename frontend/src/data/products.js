@@ -1,471 +1,313 @@
 // Product catalogue — display only (no e-commerce)
-const HERO = 'https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/d5ef2e46968c2aea45eea4dd8fc30ffdfa48ed0db3996853990aa3d5098b6d2f.png';
-const A5 = 'https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/da6ba36fd9e61e862e8c85a53cd91baee1e5fad93fe2c89e2c3a52cc8231d261.png';
-const AUS = 'https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/cc057bde3e4db0cb25052ee68c00ca86a350787725a2573b11fbc52774a71b6c.png';
-const USA = 'https://images.unsplash.com/photo-1728376335968-fe671a2013d6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxyYXclMjB3YWd5dSUyMHN0ZWFrJTIwZGFya3xlbnwwfHx8fDE3Nzc5NzY2NTR8MA&ixlib=rb-4.1.0&q=85';
-const TOMA = 'https://images.unsplash.com/photo-1728042359879-f5d2c233a07c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxyYXclMjB3YWd5dSUyMHN0ZWFrJTIwZGFya3xlbnwwfHx8fDE3Nzc5NzY2NTR8MA&ixlib=rb-4.1.0&q=85';
-const SEAFOOD = 'https://images.unsplash.com/photo-1705917669135-19e1bd0fe7b1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwyfHxyYXclMjBsb2JzdGVyJTIwdGFpbHxlbnwwfHx8fDE3Nzc5NzY2NTR8MA&ixlib=rb-4.1.0&q=85';
-const SALT = 'https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/3334e6c2acc12ffa195d7e69467ae2a30040c7090f650af0ee8724defcf8b872.png';
-const PLATING = 'https://images.unsplash.com/photo-1621494268492-d01b98eba7e4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxmaW5lJTIwZGluaW5nJTIwY2hlZiUyMGRhcmt8ZW58MHx8fHwxNzc3OTc2NjU0fDA&ixlib=rb-4.1.0&q=85';
+// Organized by origin country with proper meat types and cuts
 
-// Additional steak imagery (from Unsplash, dark luxury)
-const STEAK_PAN = 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1600&q=80';
-const STEAK_RAW = 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=1600&q=80';
-const STEAK_GRILL = 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=80';
-const STEAK_DARK = 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1600&q=80';
-const STEAK_RIBEYE = 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=1600&q=80';
-const STEAK_BUTCHER = 'https://images.unsplash.com/photo-1603048719539-9ecb4aa395e3?auto=format&fit=crop&w=1600&q=80';
-const ABALONE = 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80';
-const PRAWN = 'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=1600&q=80';
-const SCALLOP = 'https://images.unsplash.com/photo-1599321955726-d0c4da4f9e4e?auto=format&fit=crop&w=1600&q=80';
-const BUNDLE = 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1600&q=80';
+// ─── HIGH QUALITY UNSPLASH IMAGES ───────────────────────────────────────────
 
-export const IMAGES = { HERO, A5, AUS, USA, TOMA, SEAFOOD, SALT, PLATING, STEAK_PAN, STEAK_RAW, STEAK_GRILL, STEAK_DARK, STEAK_RIBEYE, STEAK_BUTCHER };
+// Beef cuts
+// Beef cuts — all unique verified steak/beef photos
+const IMG_RIBEYE      = 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=75'; // seared ribeye
+const IMG_STRIPLOIN   = 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=75'; // sliced steak
+const IMG_TENDERLOIN  = 'https://images.unsplash.com/photo-1504973960431-1c467e159aa4?auto=format&fit=crop&w=800&q=75'; // steak in pan
+const IMG_BRISKET     = 'https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=800&q=75'; // slow brisket
+const IMG_WAGYU_BURGER= 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=75'; // wagyu burger
+const IMG_MINCE       = 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&q=75'; // ground beef dish
+const IMG_SHORT_RIBS  = 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=75'; // beef short ribs
+const IMG_KNUCKLE     = 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=800&q=75'; // raw beef on board
+const IMG_CHUCK_ROLL  = 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=75'; // wagyu plate
+const IMG_RUMP        = 'https://images.unsplash.com/photo-1615937691194-97dbd3f3f29c?auto=format&fit=crop&w=800&q=75'; // wagyu marbling
+
+// Wagyu specific
+const IMG_WAGYU_MARBLE  = 'https://images.unsplash.com/photo-1615937691194-97dbd3f3f29c?auto=format&fit=crop&w=900&q=75'; // wagyu marbling
+const IMG_JAPANESE_WAGYU= 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=75'; // japanese wagyu plate
+const IMG_BLACK_ANGUS   = 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=75'; // grilled angus steak
+const IMG_GRASSFED      = 'https://images.unsplash.com/photo-1504973960431-1c467e159aa4?auto=format&fit=crop&w=900&q=75'; // steak in cast iron
+const IMG_GRAINFED      = 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=900&q=75'; // raw beef steak
+
+// Lamb & Mutton — beef/lamb images only
+const IMG_LAMB         = 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=75'; // rack of ribs
+const IMG_LAMB_SHOULDER= 'https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=800&q=75'; // slow-cooked shoulder
+const IMG_LAMB_LEG     = 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=75'; // sliced leg meat
+const IMG_LAMB_LOIN    = 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=75'; // loin steak
+const IMG_LAMB_RIB     = 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=800&q=75'; // rib cut
+const IMG_LAMB_SHANK   = 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=75'; // braised cut
+const IMG_MUTTON       = 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=75'; // robust meat cut
+
+// Veal
+const IMG_VEAL      = 'https://images.unsplash.com/photo-1615937691194-97dbd3f3f29c?auto=format&fit=crop&w=800&q=75'; // fine marbled cut
+const IMG_VEAL_RACK = 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=75'; // rack of ribs
+const IMG_VEAL_OSSO = 'https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=800&q=75'; // slow braised cut
+
+// Venison
+const IMG_VENISON      = 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=800&q=75'; // lean dark meat
+const IMG_VENISON_LOIN = 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=75'; // loin cut
+
+// Hero / general
+const HERO    = 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1400&q=80';
+const PLATING = 'https://images.unsplash.com/photo-1504973960431-1c467e159aa4?auto=format&fit=crop&w=900&q=75';
+const A5      = 'https://images.unsplash.com/photo-1615937691194-97dbd3f3f29c?auto=format&fit=crop&w=900&q=75';
+
+// ─── COUNTRY FLAG IMAGES (from flagcdn.com for high quality) ────────────────
+
+const FLAGS = {
+  AU: 'https://flagcdn.com/w320/au.png',
+  JP: 'https://flagcdn.com/w320/jp.png',
+  KE: 'https://flagcdn.com/w320/ke.png',
+  BR: 'https://flagcdn.com/w320/br.png',
+  NZ: 'https://flagcdn.com/w320/nz.png',
+};
+
+export const IMAGES = { HERO, A5, PLATING, IMG_WAGYU_MARBLE, IMG_JAPANESE_WAGYU, IMG_GRASSFED, IMG_LAMB, IMG_VEAL, IMG_VENISON };
+
+// ─── COUNTRIES ──────────────────────────────────────────────────────────────
+
+export const COUNTRIES = [
+  {
+    code: 'AU',
+    name: 'Australia',
+    flag: FLAGS.AU,
+    image: 'https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?auto=format&fit=crop&w=1200&q=80',
+    blurb: 'Wagyu · Black Angus · Grassfed · Grainfed · Lamb · Mutton',
+  },
+  {
+    code: 'JP',
+    name: 'Japan',
+    flag: FLAGS.JP,
+    image: 'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=75',
+    blurb: 'Japanese Wagyu — A5 Grade',
+  },
+  {
+    code: 'KE',
+    name: 'Kenya',
+    flag: FLAGS.KE,
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=75',
+    blurb: 'Premium Mutton',
+  },
+  {
+    code: 'BR',
+    name: 'Brazil',
+    flag: FLAGS.BR,
+    image: 'https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?auto=format&fit=crop&w=900&q=75',
+    blurb: 'Grassfed Beef',
+  },
+  {
+    code: 'NZ',
+    name: 'New Zealand',
+    flag: FLAGS.NZ,
+    image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=75',
+    blurb: 'Grassfed Beef',
+  },
+];
+
+// ─── CATEGORIES (by country → meat type) ────────────────────────────────────
 
 export const CATEGORIES = [
-  {
-    slug: 'japanese-a5',
-    name: 'Japanese A5 Wagyu',
-    parent: 'wagyu',
-    image: A5,
-    blurb: 'BMS 10–12 · Hyogo · Kagoshima · Miyazaki',
-  },
-  {
-    slug: 'australian',
-    name: 'Australian Wagyu',
-    parent: 'wagyu',
-    image: AUS,
-    blurb: 'Marble Score 5–9 · Margaret River · NSW',
-  },
-  {
-    slug: 'american',
-    name: 'American Wagyu',
-    parent: 'wagyu',
-    image: USA,
-    blurb: 'BMS 6–8 · Pacific Northwest · Texas',
-  },
+  // Australia
+  { slug: 'au-wagyu', name: 'Wagyu Beef', country: 'AU', image: IMG_WAGYU_MARBLE, blurb: 'Premium Australian Wagyu · Marble Score 5–9' },
+  { slug: 'au-black-angus', name: 'Black Angus', country: 'AU', image: IMG_BLACK_ANGUS, blurb: 'Australian Black Angus · Grain & Grass Fed' },
+  { slug: 'au-grassfed', name: 'Grassfed Beef', country: 'AU', image: IMG_GRASSFED, blurb: 'Australian Grassfed · Natural & Clean' },
+  { slug: 'au-grainfed', name: 'Grainfed Beef', country: 'AU', image: IMG_GRAINFED, blurb: 'Australian Grainfed · Rich & Consistent' },
+  { slug: 'au-lamb', name: 'Lamb', country: 'AU', image: IMG_LAMB, blurb: 'Australian Lamb · Tender & Mild' },
+  { slug: 'au-mutton', name: 'Mutton', country: 'AU', image: IMG_MUTTON, blurb: 'Australian Mutton · Full Flavour' },
+
+  // Japan
+  { slug: 'jp-wagyu', name: 'Japanese Wagyu', country: 'JP', image: IMG_JAPANESE_WAGYU, blurb: 'A5 Grade · BMS 10–12 · Hyogo · Kagoshima' },
+
+  // Kenya
+  { slug: 'ke-mutton', name: 'Mutton', country: 'KE', image: IMG_MUTTON, blurb: 'Kenyan Mutton · Traditional & Robust' },
+
+  // Brazil
+  { slug: 'br-grassfed', name: 'Grassfed Beef', country: 'BR', image: IMG_GRASSFED, blurb: 'Brazilian Grassfed · Bold & Natural' },
+
+  // New Zealand
+  { slug: 'nz-grassfed', name: 'Grassfed Beef', country: 'NZ', image: IMG_GRASSFED, blurb: 'New Zealand Grassfed · Pure & Clean' },
+
+  // General
+  { slug: 'gen-veal', name: 'Veal', country: 'GEN', image: IMG_VEAL, blurb: 'Premium Veal · Tender & Delicate' },
+  { slug: 'gen-venison', name: 'Venison', country: 'GEN', image: IMG_VENISON, blurb: 'Wild Game · Lean & Rich' },
 ];
+
+// ─── STANDARD CUTS ──────────────────────────────────────────────────────────
+
+const BEEF_CUTS = ['Ribeye', 'Striploin', 'Tenderloin', 'Brisket', 'Wagyu Burgers', 'Wagyu Minced Beef', 'Short Ribs', 'Knuckle', 'Chuck Roll', 'Rump'];
+const LAMB_MUTTON_CUTS = ['Shoulder', 'Leg', 'Loin', 'Rib', 'Breast', 'Shank', 'Neck', 'Flank', 'Cubes'];
+
+const BEEF_CUT_IMAGES = {
+  'Ribeye': IMG_RIBEYE,
+  'Striploin': IMG_STRIPLOIN,
+  'Tenderloin': IMG_TENDERLOIN,
+  'Brisket': IMG_BRISKET,
+  'Wagyu Burgers': IMG_WAGYU_BURGER,
+  'Wagyu Minced Beef': IMG_MINCE,
+  'Short Ribs': IMG_SHORT_RIBS,
+  'Knuckle': IMG_KNUCKLE,
+  'Chuck Roll': IMG_CHUCK_ROLL,
+  'Rump': IMG_RUMP,
+};
+
+const LAMB_CUT_IMAGES = {
+  'Shoulder': IMG_LAMB_SHOULDER,
+  'Leg': IMG_LAMB_LEG,
+  'Loin': IMG_LAMB_LOIN,
+  'Rib': IMG_LAMB_RIB,
+  'Breast': IMG_LAMB,
+  'Shank': IMG_LAMB_SHANK,
+  'Neck': IMG_LAMB,
+  'Flank': IMG_LAMB,
+  'Cubes': IMG_LAMB,
+};
+
+// Helper to generate products for a category
+function generateBeefProducts(categorySlug, categoryName, countryCode, countryName, cuts = BEEF_CUTS) {
+  return cuts.map((cut) => ({
+    slug: `${categorySlug}-${cut.toLowerCase().replace(/\s+/g, '-')}`,
+    name: `${categoryName} ${cut}`,
+    category: categorySlug,
+    origin: countryName,
+    flag: countryCode,
+    flagImg: FLAGS[countryCode] || '',
+    image: BEEF_CUT_IMAGES[cut] || IMG_RIBEYE,
+    gallery: [BEEF_CUT_IMAGES[cut] || IMG_RIBEYE, IMG_WAGYU_MARBLE, IMG_RIBEYE],
+    inStock: true,
+    cut,
+  }));
+}
+
+function generateLambMuttonProducts(categorySlug, categoryName, countryCode, countryName, cuts = LAMB_MUTTON_CUTS) {
+  return cuts.map((cut) => ({
+    slug: `${categorySlug}-${cut.toLowerCase().replace(/\s+/g, '-')}`,
+    name: `${categoryName} ${cut}`,
+    category: categorySlug,
+    origin: countryName,
+    flag: countryCode,
+    flagImg: FLAGS[countryCode] || '',
+    image: LAMB_CUT_IMAGES[cut] || IMG_LAMB,
+    gallery: [LAMB_CUT_IMAGES[cut] || IMG_LAMB, IMG_LAMB, IMG_LAMB_RIB],
+    inStock: true,
+    cut,
+  }));
+}
+
+// ─── ALL PRODUCTS ───────────────────────────────────────────────────────────
 
 export const PRODUCTS = [
-  // Japanese A5
+  // ── AUSTRALIA ─────────────────────────────────────────────────────────────
+  ...generateBeefProducts('au-wagyu', 'Wagyu Beef', 'AU', 'Australia'),
+  ...generateBeefProducts('au-black-angus', 'Black Angus', 'AU', 'Australia'),
+  ...generateBeefProducts('au-grassfed', 'Grassfed Beef', 'AU', 'Australia'),
+  ...generateBeefProducts('au-grainfed', 'Grainfed Beef', 'AU', 'Australia'),
+  ...generateLambMuttonProducts('au-lamb', 'Lamb', 'AU', 'Australia'),
+  ...generateLambMuttonProducts('au-mutton', 'Mutton', 'AU', 'Australia'),
+
+  // ── JAPAN ─────────────────────────────────────────────────────────────────
+  ...generateBeefProducts('jp-wagyu', 'Japanese Wagyu', 'JP', 'Japan'),
+
+  // ── KENYA ─────────────────────────────────────────────────────────────────
+  ...generateLambMuttonProducts('ke-mutton', 'Mutton', 'KE', 'Kenya'),
+
+  // ── BRAZIL ────────────────────────────────────────────────────────────────
+  ...generateBeefProducts('br-grassfed', 'Grassfed Beef', 'BR', 'Brazil'),
+  // Brazil also has Shoulder (lamb-type cut for grassfed)
   {
-    slug: 'japanese-a5-ribeye',
-    name: 'Japanese A5 Wagyu Ribeye',
-    category: 'wagyu',
-    sub: 'japanese-a5',
-    origin: 'Japan — Kagoshima Prefecture',
-    flag: 'JP',
-    grade: 'BMS 10–12 · A5',
-    rating: 4.9,
-    reviews: 28,
-    weights: ['200g', '400g', '600g'],
-    image: A5,
-    gallery: [A5, STEAK_DARK, STEAK_PAN],
-    badge: 'POPULAR',
+    slug: 'br-grassfed-shoulder',
+    name: 'Grassfed Beef Shoulder',
+    category: 'br-grassfed',
+    origin: 'Brazil',
+    flag: 'BR',
+    flagImg: FLAGS.BR,
+    image: IMG_LAMB_SHOULDER,
+    gallery: [IMG_LAMB_SHOULDER, IMG_GRASSFED, IMG_RIBEYE],
     inStock: true,
-    price: 1480,
-    description:
-      'The crown jewel of our Japanese collection. Sourced from registered Kuroge Washu cattle in Kagoshima, this ribeye carries an unrivalled BMS rating of 10–12. The fat melts at body temperature, dissolving on the tongue with a buttery, umami-rich sweetness.',
-    flavour: 'Buttery · Sweet umami · Hazelnut finish',
-    cooking: 'Sear 30–45 seconds per side in a screaming-hot cast-iron pan. Rest. Slice thin. Sea salt only.',
-  },
-  {
-    slug: 'japanese-a5-striploin',
-    name: 'Japanese A5 Wagyu Striploin',
-    category: 'wagyu',
-    sub: 'japanese-a5',
-    origin: 'Japan — Hyogo (Kobe lineage)',
-    flag: 'JP',
-    grade: 'BMS 10–12 · A5',
-    rating: 5.0,
-    reviews: 19,
-    weights: ['200g', '400g'],
-    image: STEAK_RAW,
-    gallery: [STEAK_RAW, A5, STEAK_DARK],
-    inStock: true,
-    price: 1620,
-    description:
-      'A more structured cut than the ribeye, the A5 striploin offers cleaner bites of dense marbling with a firmer chew — perfect for those who want intensity without overwhelming richness.',
-    flavour: 'Dense marbling · Beefy depth · Long finish',
-    cooking: 'Quick sear, generous resting. Serve with wasabi salt or daikon.',
-  },
-  {
-    slug: 'japanese-a5-tenderloin',
-    name: 'Japanese A5 Wagyu Tenderloin',
-    category: 'wagyu',
-    sub: 'japanese-a5',
-    origin: 'Japan — Miyazaki Prefecture',
-    flag: 'JP',
-    grade: 'BMS 11 · A5',
-    rating: 4.8,
-    reviews: 12,
-    weights: ['150g', '250g'],
-    image: STEAK_RIBEYE,
-    gallery: [STEAK_RIBEYE, STEAK_PAN, A5],
-    inStock: false,
-    price: 1980,
-    description:
-      'The most tender muscle on the cow, finessed by the world\'s most meticulous breeders. Silken texture, refined marbling, dinner-party royalty.',
-    flavour: 'Silken · Mild · Floral notes',
-    cooking: 'Reverse sear at 110°C, finish in clarified butter.',
-  },
-  {
-    slug: 'japanese-a5-chuck-roll',
-    name: 'Japanese A5 Wagyu Chuck Roll',
-    category: 'wagyu',
-    sub: 'japanese-a5',
-    origin: 'Japan — Kagoshima Prefecture',
-    flag: 'JP',
-    grade: 'BMS 9–10 · A5',
-    rating: 4.7,
-    reviews: 9,
-    weights: ['500g', '1kg'],
-    image: STEAK_BUTCHER,
-    gallery: [STEAK_BUTCHER, A5, STEAK_RAW],
-    inStock: true,
-    price: 980,
-    description:
-      'A working-cut for chefs — incredible marbling at a more accessible scale. Perfect for shabu-shabu, sukiyaki or thinly sliced yakiniku service.',
-    flavour: 'Lush · Sliceable · Deeply marbled',
-    cooking: 'Slice paper-thin, frozen, for hot-pot service.',
+    cut: 'Shoulder',
   },
 
-  // Australian
-  {
-    slug: 'australian-wagyu-ribeye',
-    name: 'Australian Wagyu Ribeye',
-    category: 'wagyu',
-    sub: 'australian',
-    origin: 'Australia — Margaret River',
-    flag: 'AU',
-    grade: 'Marble Score 6–7',
-    rating: 4.8,
-    reviews: 41,
-    weights: ['250g', '400g', '600g'],
-    image: AUS,
-    gallery: [AUS, STEAK_GRILL, STEAK_DARK],
-    badge: 'POPULAR',
-    inStock: true,
-    price: 480,
-    description:
-      'Grain-finished, full-blood Wagyu from Western Australia. The MS6–7 marbling delivers a generous balance of beefiness and richness — the perfect introduction to premium Wagyu.',
-    flavour: 'Rich · Beefy · Buttered crust',
-    cooking: 'Hot grill, 3 minutes per side per inch. Rest 8 minutes.',
-  },
-  {
-    slug: 'australian-wagyu-striploin',
-    name: 'Australian Wagyu Striploin',
-    category: 'wagyu',
-    sub: 'australian',
-    origin: 'Australia — NSW',
-    flag: 'AU',
-    grade: 'Marble Score 5–6',
-    rating: 4.7,
-    reviews: 33,
-    weights: ['250g', '400g'],
-    image: STEAK_GRILL,
-    gallery: [STEAK_GRILL, AUS, STEAK_PAN],
-    inStock: true,
-    price: 420,
-    description:
-      'A New York classic with a Wagyu twist. Robust beef flavour with a clean fat cap and a satisfying chew.',
-    flavour: 'Robust · Mineral · Clean fat',
-    cooking: 'Sear, baste in butter and thyme, finish in oven.',
-  },
-  {
-    slug: 'australian-wagyu-tomahawk',
-    name: 'Australian Wagyu Tomahawk',
-    category: 'wagyu',
-    sub: 'australian',
-    origin: 'Australia — Margaret River',
-    flag: 'AU',
-    grade: 'Marble Score 7+',
-    rating: 4.9,
-    reviews: 22,
-    weights: ['1.2kg', '1.6kg'],
-    image: TOMA,
-    gallery: [TOMA, AUS, STEAK_GRILL],
-    badge: 'NEW',
-    inStock: true,
-    price: 1180,
-    description:
-      'A theatrical cut for hosts who entertain. Bone-in, French-trimmed, dry-aged for 35 days. The presentation alone is worth the table-side carving.',
-    flavour: 'Showstopping · Smoky bone · Deep marbling',
-    cooking: 'Reverse sear at 120°C, finish over open flame.',
-  },
-  {
-    slug: 'australian-wagyu-picanha',
-    name: 'Australian Wagyu Picanha',
-    category: 'wagyu',
-    sub: 'australian',
-    origin: 'Australia — Queensland',
-    flag: 'AU',
-    grade: 'Marble Score 6',
-    rating: 4.6,
-    reviews: 18,
-    weights: ['800g', '1.2kg'],
-    image: STEAK_DARK,
-    gallery: [STEAK_DARK, AUS, STEAK_PAN],
-    inStock: true,
-    price: 380,
-    description:
-      'Brazilian heart-cut, Wagyu marbled. The fat cap renders into the meat for an intensely flavourful, rotisserie-style steak.',
-    flavour: 'Bold · Crusty fat · Smoky',
-    cooking: 'Skewer over coals, slice thin against the grain.',
-  },
+  // ── NEW ZEALAND ───────────────────────────────────────────────────────────
+  ...generateBeefProducts('nz-grassfed', 'Grassfed Beef', 'NZ', 'New Zealand'),
 
-  // American
-  {
-    slug: 'american-wagyu-ribeye',
-    name: 'American Wagyu Ribeye',
-    category: 'wagyu',
-    sub: 'american',
-    origin: 'USA — Pacific Northwest',
-    flag: 'US',
-    grade: 'BMS 6–8',
-    rating: 4.7,
-    reviews: 29,
-    weights: ['300g', '500g'],
-    image: USA,
-    gallery: [USA, STEAK_RIBEYE, STEAK_PAN],
+  // ── GENERAL: VEAL ─────────────────────────────────────────────────────────
+  ...['Leg', 'Loin', 'Rib', 'Breast', 'Shank', 'Neck', 'Flank', 'Veal Tenderloin / Fillet', 'Veal Striploin', 'Veal Osso Buco', 'Veal Frenched Rack', 'Veal Rack', 'Veal Loin', 'Veal Cheek', 'Veal Topside'].map((cut) => ({
+    slug: `gen-veal-${cut.toLowerCase().replace(/[\s\/]+/g, '-')}`,
+    name: `Veal ${cut.startsWith('Veal') ? cut.replace('Veal ', '') : cut}`,
+    category: 'gen-veal',
+    origin: 'Various',
+    flag: 'GEN',
+    flagImg: '',
+    image: cut.includes('Osso') ? IMG_VEAL_OSSO : cut.includes('Rack') || cut.includes('Frenched') ? IMG_VEAL_RACK : IMG_VEAL,
+    gallery: [IMG_VEAL, IMG_VEAL_RACK, IMG_VEAL_OSSO],
     inStock: true,
-    price: 360,
-    description:
-      'Wagyu × Black Angus crossbreed. Bigger, beefier, with American-style swagger and Wagyu marbling — the best of both continents.',
-    flavour: 'Beefy · Marbled · Approachable',
-    cooking: 'Cast-iron sear, butter baste, garlic and rosemary.',
-  },
-  {
-    slug: 'american-wagyu-ny-strip',
-    name: 'American Wagyu New York Strip',
-    category: 'wagyu',
-    sub: 'american',
-    origin: 'USA — Idaho',
-    flag: 'US',
-    grade: 'BMS 6',
-    rating: 4.6,
-    reviews: 17,
-    weights: ['300g', '450g'],
-    image: STEAK_RIBEYE,
-    gallery: [STEAK_RIBEYE, USA, STEAK_GRILL],
-    inStock: true,
-    price: 320,
-    description:
-      'Tighter grain, deeper flavour. The NY Strip is a steakhouse benchmark — our Wagyu version raises the bar.',
-    flavour: 'Tight grain · Beef-forward · Crusty',
-    cooking: 'Hot grill, 2.5 min per side. Rest. Cracked pepper.',
-  },
-  {
-    slug: 'american-wagyu-brisket',
-    name: 'American Wagyu Brisket',
-    category: 'wagyu',
-    sub: 'american',
-    origin: 'USA — Texas',
-    flag: 'US',
-    grade: 'BMS 7',
-    rating: 4.9,
-    reviews: 24,
-    weights: ['4kg', '6kg whole'],
-    image: STEAK_BUTCHER,
-    gallery: [STEAK_BUTCHER, USA, STEAK_RAW],
-    badge: 'NEW',
-    inStock: true,
-    price: 980,
-    description:
-      'For the smoker. American Wagyu brisket carries an outrageous fat cap that renders for 14 hours into the meat — Texas BBQ, Wagyu-elevated.',
-    flavour: 'Smoky · Confit · Soft pull',
-    cooking: 'Smoke at 110°C for 12–14h. Rest 2h. Slice across grain.',
-  },
+    cut,
+  })),
 
-  // Seafood
-  {
-    slug: 'live-australian-abalone',
-    name: 'Live Australian Abalone',
-    category: 'seafood',
-    sub: 'abalone',
-    origin: 'Australia — Tasmania',
-    flag: 'AU',
-    grade: 'Live · Wild Caught',
-    rating: 4.8,
-    reviews: 14,
-    weights: ['per piece'],
-    image: ABALONE,
-    gallery: [ABALONE, SEAFOOD, PLATING],
+  // ── GENERAL: VENISON ──────────────────────────────────────────────────────
+  ...['Loin', 'Tenderloin', 'Leg', 'Shoulder', 'Shank', 'Neck', 'Ribs', 'Flank', 'Ground Venison', 'Cubes'].map((cut) => ({
+    slug: `gen-venison-${cut.toLowerCase().replace(/\s+/g, '-')}`,
+    name: `Venison ${cut}`,
+    category: 'gen-venison',
+    origin: 'Various',
+    flag: 'GEN',
+    flagImg: '',
+    image: cut === 'Loin' ? IMG_VENISON_LOIN : IMG_VENISON,
+    gallery: [IMG_VENISON, IMG_VENISON_LOIN, IMG_VENISON],
     inStock: true,
-    price: 280,
-    description:
-      'Wild-dived from the cold waters of Tasmania. Delivered live for unparalleled freshness — the ultimate textural luxury.',
-    flavour: 'Briny · Delicate · Firm',
-    cooking: 'Score, butter-poach gently, finish in dashi.',
-  },
-  {
-    slug: 'cold-water-lobster-tail',
-    name: 'Cold Water Lobster Tail',
-    category: 'seafood',
-    sub: 'lobster',
-    origin: 'Canada — Nova Scotia',
-    flag: 'CA',
-    grade: 'Wild · Cold Water',
-    rating: 4.9,
-    reviews: 36,
-    weights: ['200g', '300g', '400g'],
-    image: SEAFOOD,
-    gallery: [SEAFOOD, ABALONE, PLATING],
-    badge: 'POPULAR',
-    inStock: true,
-    price: 320,
-    description:
-      'The sweetest, firmest lobster in the world. Cold-water tails carry no rubbery bite — only clean, sweet meat that begs for drawn butter.',
-    flavour: 'Sweet · Firm · Clean',
-    cooking: 'Butterfly, butter-baste, broil 6 minutes.',
-  },
-  {
-    slug: 'tiger-prawns-king-size',
-    name: 'Tiger Prawns — King Size',
-    category: 'seafood',
-    sub: 'shrimp',
-    origin: 'Madagascar',
-    flag: 'MG',
-    grade: 'Wild Caught · U10',
-    rating: 4.7,
-    reviews: 21,
-    weights: ['500g', '1kg'],
-    image: PRAWN,
-    gallery: [PRAWN, SEAFOOD, PLATING],
-    inStock: true,
-    price: 240,
-    description:
-      'Massive U10 tiger prawns, head-on. Sweet, snappy, and full of character — perfect for the grill or a Provençal sauté.',
-    flavour: 'Sweet · Snappy · Briny',
-    cooking: 'Grill head-on, finish with garlic confit.',
-  },
-  {
-    slug: 'hand-dived-scallops',
-    name: 'Hand-Dived Scallops',
-    category: 'seafood',
-    sub: 'scallop',
-    origin: 'Scotland — Hebrides',
-    flag: 'GB',
-    grade: 'Hand-Dived · Day Boat',
-    rating: 4.8,
-    reviews: 19,
-    weights: ['6 pcs', '12 pcs'],
-    image: SCALLOP,
-    gallery: [SCALLOP, SEAFOOD, PLATING],
-    inStock: true,
-    price: 280,
-    description:
-      'Hand-dived from the Hebrides — never dredged, never mistreated. Expect a clean caramel sear and a sweet, custard-soft centre.',
-    flavour: 'Sweet · Custard centre · Caramel sear',
-    cooking: 'Pat dry, sear 90 seconds per side, brown butter.',
-  },
-
-  // Bundles
-  {
-    slug: 'ultimate-wagyu-tasting-box',
-    name: 'The Ultimate Wagyu Tasting Box',
-    category: 'bundles',
-    sub: 'variety',
-    origin: 'Japan · Australia · USA',
-    flag: 'WW',
-    grade: 'Curated Sampler',
-    rating: 5.0,
-    reviews: 11,
-    weights: ['Set of 6'],
-    image: BUNDLE,
-    gallery: [BUNDLE, A5, AUS, USA],
-    badge: 'POPULAR',
-    inStock: true,
-    price: 2480,
-    description:
-      'A curated journey through three continents — A5 Japanese, MS7 Australian, and BMS6 American Wagyu. Six steaks, three origins, one unforgettable evening.',
-    flavour: 'Comparative tasting · Three origins',
-    cooking: 'Sear each cut individually for a side-by-side flight.',
-  },
-  {
-    slug: 'seafood-luxury-bundle',
-    name: 'The Seafood Luxury Bundle',
-    category: 'bundles',
-    sub: 'seafood',
-    origin: 'Worldwide',
-    flag: 'WW',
-    grade: 'Curated',
-    rating: 4.8,
-    reviews: 8,
-    weights: ['Bundle for 4'],
-    image: SEAFOOD,
-    gallery: [SEAFOOD, ABALONE, SCALLOP, PRAWN],
-    inStock: true,
-    price: 1480,
-    description:
-      'Lobster tails, hand-dived scallops, tiger prawns and live abalone — a pescatarian feast for four.',
-    flavour: 'Sea-forward · Layered · Pristine',
-    cooking: 'Butter, lemon, restraint.',
-  },
-  {
-    slug: 'bbq-master-bundle',
-    name: 'The BBQ Master Bundle',
-    category: 'bundles',
-    sub: 'wagyu',
-    origin: 'USA · Australia',
-    flag: 'WW',
-    grade: 'Smoker-Ready',
-    rating: 4.9,
-    reviews: 13,
-    weights: ['Bundle for 6'],
-    image: STEAK_BUTCHER,
-    gallery: [STEAK_BUTCHER, TOMA, USA],
-    inStock: true,
-    price: 1980,
-    description:
-      'Tomahawk, brisket, picanha and short ribs — four heroic cuts engineered for a long, smoky weekend.',
-    flavour: 'Smoke · Fat · Bone',
-    cooking: 'Low-and-slow, then high heat to finish.',
-  },
-
-  // Pantry
-  {
-    slug: 'maldon-smoked-sea-salt',
-    name: 'Maldon Smoked Sea Salt Flakes',
-    category: 'pantry',
-    sub: 'salt',
-    origin: 'England — Essex',
-    flag: 'GB',
-    grade: 'Hand-Harvested · Cold-Smoked',
-    rating: 4.9,
-    reviews: 47,
-    weights: ['125g'],
-    image: SALT,
-    gallery: [SALT, PLATING],
-    inStock: true,
-    price: 65,
-    description:
-      'The only seasoning a Wagyu steak truly needs. Pyramidal flakes, cold-smoked over oak, finishing every steak with a bonfire-soft crunch.',
-    flavour: 'Smoky · Crunchy · Briny',
-    cooking: 'Finish only. Never cook with it.',
-  },
+    cut,
+  })),
 ];
 
+// ─── CATEGORY TABS (for filter sidebar) ─────────────────────────────────────
+
 export const CATEGORY_TABS = [
-  { key: 'wagyu', label: 'Wagyu', subs: [
-    { key: 'japanese-a5', label: 'Japanese A5' },
-    { key: 'australian', label: 'Australian' },
-    { key: 'american', label: 'American' },
-  ]},
-  { key: 'seafood', label: 'Seafood', subs: [
-    { key: 'abalone', label: 'Abalone' },
-    { key: 'lobster', label: 'Lobster' },
-    { key: 'shrimp', label: 'Shrimp' },
-    { key: 'scallop', label: 'Scallop' },
-  ]},
-  { key: 'bundles', label: 'Bundles', subs: [
-    { key: 'variety', label: 'Variety' },
-    { key: 'wagyu', label: 'Wagyu Bundle' },
-    { key: 'seafood', label: 'Seafood Bundle' },
-  ]},
-  { key: 'pantry', label: 'Pantry', subs: [
-    { key: 'salt', label: 'Sea Salt' },
-  ]},
+  {
+    key: 'AU',
+    label: '🇦🇺 Australia',
+    flag: FLAGS.AU,
+    subs: [
+      { key: 'au-wagyu', label: 'Wagyu Beef' },
+      { key: 'au-black-angus', label: 'Black Angus' },
+      { key: 'au-grassfed', label: 'Grassfed Beef' },
+      { key: 'au-grainfed', label: 'Grainfed Beef' },
+      { key: 'au-lamb', label: 'Lamb' },
+      { key: 'au-mutton', label: 'Mutton' },
+    ],
+  },
+  {
+    key: 'JP',
+    label: '🇯🇵 Japan',
+    flag: FLAGS.JP,
+    subs: [
+      { key: 'jp-wagyu', label: 'Japanese Wagyu' },
+    ],
+  },
+  {
+    key: 'KE',
+    label: '🇰🇪 Kenya',
+    flag: FLAGS.KE,
+    subs: [
+      { key: 'ke-mutton', label: 'Mutton' },
+    ],
+  },
+  {
+    key: 'BR',
+    label: '🇧🇷 Brazil',
+    flag: FLAGS.BR,
+    subs: [
+      { key: 'br-grassfed', label: 'Grassfed Beef' },
+    ],
+  },
+  {
+    key: 'NZ',
+    label: '🇳🇿 New Zealand',
+    flag: FLAGS.NZ,
+    subs: [
+      { key: 'nz-grassfed', label: 'Grassfed Beef' },
+    ],
+  },
+  {
+    key: 'GEN',
+    label: 'General',
+    subs: [
+      { key: 'gen-veal', label: 'Veal' },
+      { key: 'gen-venison', label: 'Venison' },
+    ],
+  },
 ];
 
 export const TESTIMONIALS = [
@@ -475,7 +317,7 @@ export const TESTIMONIALS = [
       'I have eaten A5 in Tokyo, Hong Kong and London. Wagyu Prime UAE delivered the best ribeye I have had in five years. Genuinely.',
     name: 'Faisal Al-Mansoori',
     city: 'Dubai',
-    bg: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=2000&q=80',
+    bg: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=1200&q=75',
   },
   {
     headline: 'A dinner party legend',
@@ -483,7 +325,7 @@ export const TESTIMONIALS = [
       'The tomahawk arrived in pristine condition, perfectly trimmed. My guests still talk about it three months later.',
     name: 'Layla Mubarak',
     city: 'Abu Dhabi',
-    bg: 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=2000&q=80',
+    bg: 'https://images.unsplash.com/photo-1546964124-0cce460f38ef?auto=format&fit=crop&w=1200&q=75',
   },
   {
     headline: 'The only butcher I trust',
@@ -491,6 +333,6 @@ export const TESTIMONIALS = [
       'Their sourcing is honest. Their packaging is immaculate. Their answer to "what cut should I get?" is always right.',
     name: 'Karim Saleh',
     city: 'Sharjah',
-    bg: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=2000&q=80',
+    bg: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1200&q=75',
   },
 ];

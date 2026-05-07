@@ -84,17 +84,17 @@
   "media_assets": {
     "images": {
       "hero_wagyu": {
-        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/d5ef2e46968c2aea45eea4dd8fc30ffdfa48ed0db3996853990aa3d5098b6d2f.png",
+        "url": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=2000&q=80",
         "description": "Cinematic wide shot of premium Wagyu steak in cast iron pan",
         "usage": "Homepage Hero Section Background"
       },
       "japanese_a5_category": {
-        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/da6ba36fd9e61e862e8c85a53cd91baee1e5fad93fe2c89e2c3a52cc8231d261.png",
+        "url": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=1600&q=80",
         "description": "Raw Japanese A5 Wagyu beef block",
         "usage": "Category Card: Japanese A5 Wagyu"
       },
       "australian_wagyu_category": {
-        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/cc057bde3e4db0cb25052ee68c00ca86a350787725a2573b11fbc52774a71b6c.png",
+        "url": "https://images.unsplash.com/photo-1603048719539-9ecb4aa395e3?auto=format&fit=crop&w=1600&q=80",
         "description": "Raw Australian Wagyu ribeye steak on dark wood",
         "usage": "Category Card: Australian Wagyu"
       },
@@ -114,7 +114,7 @@
         "usage": "Products Listing: Premium Seafood"
       },
       "pantry_sea_salt": {
-        "url": "https://static.prod-images.emergentagent.com/jobs/86f74a29-ba47-48b2-bc3e-3975d293331f/images/3334e6c2acc12ffa195d7e69467ae2a30040c7090f650af0ee8724defcf8b872.png",
+        "url": "https://images.unsplash.com/photo-1518110925495-5fe2c8f2be87?auto=format&fit=crop&w=1600&q=80",
         "description": "Artisan sea salt in dark ceramic bowl",
         "usage": "Products Listing: Pantry / Seasoning"
       },
@@ -129,7 +129,7 @@
   "testing_attributes": {
     "rules": "All interactive elements MUST have data-testid attributes (e.g., data-testid='contact-to-order-btn', data-testid='category-filter-wagyu')."
   },
-  "instructions_to_main_agent": [
+  "instructions": [
     "No e-commerce cart. Replace all 'Add to Cart' functionality with a 'Contact to Order' CTA that links to WhatsApp.",
     "Use standard Shadcn UI components for complex interactions but strip standard borders; use only 1px #C9A84C/20 borders and no default rounded corners (rounded-none for sharp luxury feel).",
     "Strictly adhere to the dark theme #1A1A1A background with gold accents. Do not introduce standard grays or blues.",

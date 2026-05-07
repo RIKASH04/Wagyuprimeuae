@@ -14,7 +14,7 @@ export const Reveal = ({ children, delay = 0, className = '', as: As = 'div' }) 
           obs.disconnect();
         }
       },
-      { threshold: 0.18 }
+      { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
     );
     obs.observe(el);
     return () => obs.disconnect();

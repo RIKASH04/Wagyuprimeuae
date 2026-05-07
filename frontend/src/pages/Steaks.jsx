@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SlidersHorizontal, X } from 'lucide-react';
-import { PRODUCTS, CATEGORY_TABS } from '../data/products';
+import { PRODUCTS, CATEGORY_TABS, COUNTRIES } from '../data/products';
 import ProductCard from '../components/ProductCard';
 import Reveal from '../components/Reveal';
 
@@ -26,8 +26,15 @@ const Steaks = () => {
 
   const filtered = useMemo(() => {
     return PRODUCTS.filter((p) => {
-      if (activeCat !== 'all' && p.category !== activeCat) return false;
-      if (activeSub !== 'all' && p.sub !== activeSub) return false;
+      if (activeCat !== 'all') {
+        // activeCat is a country code like 'AU', 'JP', etc. or 'GEN'
+        const tab = CATEGORY_TABS.find((t) => t.key === activeCat);
+        if (tab) {
+          const subKeys = tab.subs.map((s) => s.key);
+          if (!subKeys.includes(p.category)) return false;
+        }
+      }
+      if (activeSub !== 'all' && p.category !== activeSub) return false;
       return true;
     });
   }, [activeCat, activeSub]);
@@ -35,6 +42,9 @@ const Steaks = () => {
   const subFilters = activeCat === 'all'
     ? []
     : (CATEGORY_TABS.find((t) => t.key === activeCat)?.subs || []);
+
+  // Get active country info for display
+  const activeCountry = COUNTRIES.find((c) => c.code === activeCat);
 
   return (
     <div data-testid="steaks-page" className="bg-[#1A1A1A] min-h-screen">
@@ -46,16 +56,16 @@ const Steaks = () => {
               The Catalogue
             </div>
             <h1 className="font-display text-5xl md:text-7xl text-white leading-[0.95] tracking-tight">
-              All Steaks <span className="italic text-[#C9A84C]">& Products</span>
+              Premium Meats <span className="italic text-[#C9A84C]">by Origin</span>
             </h1>
             <p className="mt-5 text-white/65 text-base md:text-lg max-w-2xl">
-              {filtered.length} curated cuts — sourced from Japan, Australia, and the United States. Display only — contact us to order.
+              {filtered.length} curated cuts — sourced from Australia, Japan, Kenya, Brazil, and New Zealand. Display only — contact us to order.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Top category tiles */}
+      {/* Top country tiles */}
       <section className="border-y border-[#C9A84C]/15 bg-[#0F0F0F]/40">
         <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-4 flex items-center gap-3 overflow-x-auto scrollbar-none">
           <button
@@ -70,9 +80,12 @@ const Steaks = () => {
               key={t.key}
               onClick={() => setCat(t.key)}
               data-testid={`filter-cat-${t.key}`}
-              className={`shrink-0 font-heading text-[10px] tracking-[0.32em] uppercase px-5 py-2 border transition-colors ${activeCat === t.key ? 'border-[#C9A84C] text-[#1A1A1A] bg-[#C9A84C]' : 'border-[#C9A84C]/30 text-white hover:border-[#C9A84C]'}`}
+              className={`shrink-0 flex items-center gap-2 font-heading text-[10px] tracking-[0.32em] uppercase px-5 py-2 border transition-colors ${activeCat === t.key ? 'border-[#C9A84C] text-[#1A1A1A] bg-[#C9A84C]' : 'border-[#C9A84C]/30 text-white hover:border-[#C9A84C]'}`}
             >
-              {t.label}
+              {t.flag && (
+                <img src={t.flag} alt={t.label} className="w-5 h-3.5 object-cover rounded-sm" />
+              )}
+              {t.label.replace(/^[\u{1F1E6}-\u{1F1FF}]{2}\s*/u, '')}
             </button>
           ))}
           <div className="ml-auto flex items-center gap-3 shrink-0">
@@ -89,6 +102,27 @@ const Steaks = () => {
           </div>
         </div>
       </section>
+
+      {/* Active country hero banner */}
+      {activeCountry && (
+        <section className="border-b border-[#C9A84C]/15">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-10 py-8">
+            <div className="flex items-center gap-5">
+              <img
+                src={activeCountry.flag}
+                alt={`${activeCountry.name} flag`}
+                className="w-16 h-11 object-cover rounded shadow-lg border border-white/10"
+              />
+              <div>
+                <h2 className="font-display text-3xl md:text-4xl text-white">
+                  {activeCountry.name}
+                </h2>
+                <p className="text-white/60 text-sm mt-1">{activeCountry.blurb}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Body */}
       <section className="max-w-[1440px] mx-auto px-6 md:px-10 py-12 md:py-16 grid grid-cols-12 gap-10">
@@ -156,7 +190,7 @@ const FilterColumn = ({ activeCat, activeSub, setCat, setSub, subFilters }) => (
   <div className="space-y-10">
     <div>
       <div className="font-heading text-[10px] tracking-[0.32em] uppercase text-[#C9A84C] mb-5">
-        Category
+        Origin Country
       </div>
       <ul className="space-y-3">
         <li>
@@ -173,9 +207,12 @@ const FilterColumn = ({ activeCat, activeSub, setCat, setSub, subFilters }) => (
             <button
               onClick={() => setCat(t.key)}
               data-testid={`side-cat-${t.key}`}
-              className={`text-sm tracking-wide ${activeCat === t.key ? 'text-[#C9A84C]' : 'text-white/75 hover:text-white'}`}
+              className={`flex items-center gap-2.5 text-sm tracking-wide ${activeCat === t.key ? 'text-[#C9A84C]' : 'text-white/75 hover:text-white'}`}
             >
-              {t.label}
+              {t.flag && (
+                <img src={t.flag} alt="" className="w-5 h-3.5 object-cover rounded-sm" />
+              )}
+              {t.label.replace(/^[\u{1F1E6}-\u{1F1FF}]{2}\s*/u, '')}
             </button>
           </li>
         ))}
@@ -185,7 +222,7 @@ const FilterColumn = ({ activeCat, activeSub, setCat, setSub, subFilters }) => (
     {subFilters.length > 0 && (
       <div>
         <div className="font-heading text-[10px] tracking-[0.32em] uppercase text-[#C9A84C] mb-5">
-          Refine
+          Meat Type
         </div>
         <ul className="space-y-3">
           <li>

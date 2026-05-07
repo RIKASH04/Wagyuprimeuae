@@ -4,28 +4,39 @@ import { Menu, X } from 'lucide-react';
 import { SITE } from '../lib/site';
 
 const NAV = [
-  { to: '/steaks', label: 'Steaks' },
+  { to: '/steaks', label: 'Catalogue' },
   { to: '/about', label: 'About Us' },
   { to: '/blog', label: 'Blog' },
   { to: '/contact', label: 'Contact' },
 ];
 
-const Logo = ({ className = '' }) => (
-  <Link
-    to="/"
-    aria-label="WagyuPrimeUAE home"
-    data-testid="header-logo"
-    className={`group inline-flex items-center justify-center ${className}`}
-  >
-    <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border border-[#C9A84C]/70 flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-1 rounded-full border border-[#C9A84C]/30" />
-      <div className="text-center leading-none">
-        <div className="font-display italic text-[#C9A84C] text-[14px] md:text-[15px]">Wagyu</div>
-        <div className="font-heading text-[7px] md:text-[8px] tracking-[0.3em] text-white mt-0.5">PRIME UAE</div>
+const Logo = ({ className = '' }) => {
+  const [imgError, setImgError] = React.useState(false);
+  return (
+    <Link
+      to="/"
+      aria-label="WagyuPrimeUAE home"
+      data-testid="header-logo"
+      className={`group inline-flex items-center justify-center ${className}`}
+    >
+      <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full border border-[#C9A84C]/70 flex items-center justify-center overflow-hidden">
+        {!imgError ? (
+          <img
+            src="/logo/logo.png"
+            alt="Wagyu Prime UAE"
+            className="w-full h-full object-cover"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="text-center leading-none">
+            <div className="font-display italic text-[#C9A84C] text-[14px] md:text-[15px]">Wagyu</div>
+            <div className="font-heading text-[7px] md:text-[8px] tracking-[0.3em] text-white mt-0.5">PRIME UAE</div>
+          </div>
+        )}
       </div>
-    </div>
-  </Link>
-);
+    </Link>
+  );
+};
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
